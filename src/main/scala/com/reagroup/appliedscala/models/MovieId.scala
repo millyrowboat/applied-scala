@@ -2,6 +2,7 @@ package com.reagroup.appliedscala.models
 
 import io.circe.Encoder
 import io.circe.Json
+import io.circe.syntax._
 
 case class MovieId(value: Long)
 
@@ -18,4 +19,5 @@ object MovieId {
     *
     * Hint: You don't want to use `deriveEncoder` here
     */
+  implicit val movieIdEncoder: Encoder[MovieId] = Encoder.instance(id => Json.obj("id" := id.value))
 }

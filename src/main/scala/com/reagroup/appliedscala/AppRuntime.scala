@@ -43,6 +43,11 @@ class AppRuntime(config: Config, httpClient: Client[IO], contextShift: ContextSh
     new FetchEnrichedMovieController(fetchEnrichedMovieService.fetch)
   }
 
+  private val saveMovieController: SaveMovieController = {
+    val saveMovieService: SaveMovieService = new SaveMovieService(pgsqlRepo.saveMovie)
+    new SaveMovieController(saveMovieService.save)
+  }
+
   private val appRoutes = new AppRoutes(
     fetchAllMoviesHandler = fetchAllMoviesController.fetchAll,
     fetchMovieHandler = fetchMovieController.fetch,

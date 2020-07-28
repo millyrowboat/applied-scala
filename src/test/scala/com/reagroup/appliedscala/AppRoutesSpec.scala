@@ -1,12 +1,10 @@
 package com.reagroup.appliedscala
 
 import cats.effect.IO
-
 import com.reagroup.appliedscala.Http4sSpecHelpers._
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
-import org.http4s.testing.Http4sMatchers
-import org.http4s.testing.IOMatchers
+import org.http4s.testing.{Http4sMatchers, IOMatchers}
 import org.specs2.mutable.Specification
 import org.specs2.specification.core.Fragment
 
@@ -21,9 +19,9 @@ class AppRoutesSpec extends Specification with Http4sDsl[IO] with Http4sMatchers
 
   private val testAppRoutes = new AppRoutes(
     fetchAllMoviesHandler = fetchAllMovies,
-    saveMovieHandler = saveMovie,
-    fetchMovieHandler = fetchMovie
-//    fetchEnrichedMovieHandler = fetchEnrichedMovie,
+    fetchMovieHandler = fetchMovie,
+    fetchEnrichedMovieHandler = fetchEnrichedMovie,
+    saveMovieHandler = saveMovie
 //    saveReviewHandler = saveReview
   )
 
